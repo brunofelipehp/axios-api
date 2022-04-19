@@ -17,12 +17,31 @@ function addNewUser(newUser){
     .catch(error => console.error(error))
 }
 
+function getUser(id){
+
+    axios.get(`${url}/${id}`)
+    .then(response => {
+        const data = response.data
+        userName.textContent = data.name
+        userCity.textContent = data.city
+        userID.textContent = data.id
+        userAvatar.src = data.avatar
+
+    } )
+    .catch(error => console.error(error))
+}
+
+
+
 const newUser = {
     name: "Olivia Zars",
     avatar: "https://picsum.photos/200/300",
     city: "Rio Janeiro"
 }
 
-addNewUser(newUser)
+
+//addNewUser(newUser)
 
 getUsers()
+
+getUser(2)
